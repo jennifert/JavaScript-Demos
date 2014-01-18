@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap with Single Google Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <style>
+    #mapmodals label { width: auto!important; display:inline!important; }
+    #mapmodals img { max-width: none!important; }
+    html, body, #map-canvas {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    #map-canvas {
+      width:100%;
+      height: 300px;
+    }
+    </style>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <h1>Single Google Map in Bootstrap Modal</h1>
+      <p>Click the below button</p>
+
+      <!-- Button to trigger modal -->
+      <p><a href="#mapmodals" role="button" data-toggle="modal" class="btn btn-primary">Launch map</a></p>  
+
+      <!-- MAPS -->
+      <div class="modal fade" id="mapmodals">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myCity">Cineplex Odeon Yonge & Dundas Cinemas</h4>
+            </div>
+            <div class="modal-body">
+              <div id="map_canvas" style="width:530px; height:300px"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="close" data-dismiss="modal">Close</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+    var map;
+     myLatlng = new google.maps.LatLng(43.65644,-79.380686);
+     function initialize() {
+            var mapOptions = {
+              center: myLatlng,
+              zoom: 14,
+              mapTypeControl: false,
+              center:myLatlng,
+              panControl:false,
+              rotateControl:false,
+              streetViewControl: false,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("map_canvas"),
+                mapOptions);
+      
+            var contentString = '<div id="mapInfo">'+
+            '<p><strong>Cineplex Odeon Yong & Dundas</strong><br>'+
+            'Suite 402<br>10 Dundas Street East<br>' +
+            'Toronto, ON<br>'+
+            'P: (416) 977-9262</p>'+
+            '<a href="http://www.google.ca/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CF4QFjAA&url=http%3A%2F%2Fwww.cineplex.com%2FTheatres%2FTheatreDetails%2FCineplex-Odeon-Yonge-Dundas-Cinemas-formerly-AMC-.aspx&ei=wVxnUdfWM8GtqgGc5YGoCQ&usg=AFQjCNFrLpCFDXGjtGx6y1GSkSNvhdrMpA&bvm=bv.45107431,d.aWM" target="_blank">Now Playing</a>'+
+            '</div>';
+
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+          
+          var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title:"Cineplex Odeon Yong & Dundas",
+                  maxWidth: 200,
+                  maxHeight: 200
+          });
+
+
+          google.maps.event.addListener(marker, 'click', function() {
+             infowindow.open(map,marker);
+          });
+      }
+
+          google.maps.event.addDomListener(window, 'load', initialize);
+      
+      //start of modal google map
+      $('#mapmodals').on('shown.bs.modal', function () {
+          google.maps.event.trigger(map, "resize");
+          map.setCenter(myLatlng);
+      });
+      //end of modal google map
+    </script>
+
+</body>
+</html>

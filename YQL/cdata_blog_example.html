@@ -4,7 +4,7 @@
       <meta charset="utf-8">
       <title>Blog Example Template</title>
       <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
-      <link rel="stylesheet" href="css/font-awesome.min.css"><!--font-awesome-->
+      <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -81,10 +81,10 @@
           
 
         <!--jQuery and botstrap JS-->
-        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
         <script>
         //declare vars
-var blogLink = 'https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('SELECT entry.title,entry.link.href,entry.published,entry.category.term,entry.summary FROM feednormalizer WHERE url= "http://jenntesolin.com/blog/feed/atom/" AND output="atom_1.0" LIMIT 1')+'&format=json&diagnostics=false&callback=?';
+var blogLink = 'https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('SELECT entry.title,entry.link.href,entry.published,entry.category.term,entry.content FROM feednormalizer WHERE url= "https://www.jenntesolin.com/atom.xml" AND output="atom_1.0" LIMIT 1')+'&format=json&diagnostics=false&callback=?';
 //end variable declare
 
 jQuery.noConflict();
@@ -93,11 +93,12 @@ jQuery(document).ready(function($){
   //Call blog feed
   $.getJSON(blogLink, function(data){
     //get data
-    var title =data.query.results.feed.entry.title.content;
+    var title =data.query.results.feed.entry.title;
     var link =data.query.results.feed.entry.link.href;
     var category =data.query.results.feed.entry.category.term;
     var published=data.query.results.feed.entry.published;
-    var summary =data.query.results.feed.entry.summary.content;
+    //var summary =data.query.results.feed.entry.summary.content; //for summary instead of content
+    var summary =data.query.results.feed.entry.content.content;
 
     //display
     $('.blog-header').html(title);

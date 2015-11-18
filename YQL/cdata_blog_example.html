@@ -84,7 +84,7 @@
         <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
         <script>
         //declare vars
-var blogLink = 'https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('SELECT entry.title,entry.link.href,entry.published,entry.category.term,entry.content FROM feednormalizer WHERE url= "https://www.jenntesolin.com/atom.xml" AND output="atom_1.0" LIMIT 1')+'&format=json&diagnostics=false&callback=?';
+var blogLink = 'https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('SELECT entry.title,entry.link.href,entry.published,entry.summary,entry.category.term,entry.content FROM feednormalizer WHERE url= "https://www.jenntesolin.com/atom.xml" AND output="atom_1.0" LIMIT 1')+'&format=json&diagnostics=false&callback=?';
 //end variable declare
 
 jQuery.noConflict();

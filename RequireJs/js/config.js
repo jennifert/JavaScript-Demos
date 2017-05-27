@@ -1,7 +1,7 @@
 require.config({
     paths: {
-        'jquery': 'http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.8.3',
-        'jquery.bootstrap': 'http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min',
+        'jquery': 'https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.8.3',
+        'jquery.bootstrap': 'https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min',
         'async': 'async',
         'goog': 'goog',
         'propertyParser' : 'propertyParser'
@@ -11,7 +11,7 @@ require.config({
     }
 });
 
-require(['jquery','jquery.bootstrap','goog!maps,3,other_params:sensor=false'], function($) {
+require(['jquery','jquery.bootstrap','goog!maps,3'], function($) {
      var myLatlng = new google.maps.LatLng(43.65644,-79.380686);
 
     $(function() {

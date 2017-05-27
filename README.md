@@ -28,3 +28,11 @@ Here are examples on my server of the demos.
 
 ### Require JS:
 - With Google Maps and Bootstrap: [https://jenntesolin.com/demos/requirejs.html](https://jenntesolin.com/demos/requirejs.html)
+
+## Coming soon!
+
+In the future, hope to have examples of Fetch, and other technologies.
+
+## Problems?
+
+If you experience any issues, please open an issue, or a pull request. 

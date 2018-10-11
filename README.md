@@ -6,6 +6,7 @@ These are just some small demos using JavaScript libraries and technology.
 Notes
 - The Google Maps and Bootstrap examples are self contained (css and JavaScript are called from CDN).
 - The require JS library has some elements relative to the folder, as well as CDN use.
+- Please do not add any demos that require running npm scripts.
 
 ## Demo links:
 

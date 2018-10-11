@@ -3,15 +3,13 @@ JavaScript Demos
 
 These are just some small demos using JavaScript libraries and technology.
 
-Feel free to request new examples or code improvements via the issues functionality in GitHub.
-
 Notes
 - The Google Maps and Bootstrap examples are self contained (css and JavaScript are called from CDN).
 - The require JS library has some elements relative to the folder, as well as CDN use.
 
 ## Demo links:
 
-Here are examples on my server of the demos.
+Here are the demos running on a server:
 
 ### YQL:
 - Basic YQL: [https://jenntesolin.com/demos/basic.html](https://jenntesolin.com/demos/basic.html)
@@ -29,10 +27,6 @@ Here are examples on my server of the demos.
 ### Require JS:
 - With Google Maps and Bootstrap: [https://jenntesolin.com/demos/requirejs.html](https://jenntesolin.com/demos/requirejs.html)
 
-## Coming soon!
+## Problems? Something missing?
 
-In the future, hope to have examples of Fetch, and other technologies.
-
-## Problems?
-
-If you experience any issues, please open an issue, or a pull request. 
+Feel free to open an issue and pull request. 

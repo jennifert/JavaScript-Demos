@@ -6,5 +6,7 @@ Pull requests should be added into a subject folder (ex. Bootstrap). If you have
 
 Feel free to create new group folders but please stay on subject (for example: Fetch).
 
-## GitHub Username
+## GitHub Usernames of all Contributorrs
+Add yours to the list as part of your pull request.
+
 @jennifert

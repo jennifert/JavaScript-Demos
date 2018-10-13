@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Leaflet demo: Multi map</title>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
+
+  <!-- Custom CSS -->
+  <style>
+    .map-canvas {
+      width:100%;
+      height:300px
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Multi map with Leaflet</h1>
+    <p>Click a location to see map</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Movie</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong>The Host</strong>
+          </td>
+          <td>
+            <i class="icon-map-marker"></i> 
+            <a class="js-openmap" href="#mapmodal" role="button" data-toggle="modal"
+               data-title="Cineplex Odeon Yonge &amp; Dundas Cinemas"
+               data-long="43.65644"
+               data-lat="-79.380686"
+               data-popup="<p>10 Dundas Street East<br />Toronto, ON<br />P: (416) 977-9262</p><p><a href='http://www.cineplex.com/Theatres/TheatreDetails/Cineplex-Odeon-Yonge-Dundas-Cinemas-formerly-AMC-.aspx' target='_blank'>Now Playing</a></p>">
+              Cineplex Odeon Yonge &amp; Dundas Cinemas
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Jurassic Park</strong>
+          </td>
+          <td>
+            <i class="icon-map-marker"></i>
+            <a class="js-openmap" href="#mapmodals" role="button" data-toggle="modal"
+               data-title="Scotiabank Theatre Toronto"
+               data-long="43.648932"
+               data-lat="-79.391384"
+               data-popup="<p>259 Richmond Street West<br />Ontario<br />P: (416)368-5600</p><p><a href='http://www.cineplex.com/Theatres/TheatreDetails/Scotiabank-Theatre-Toronto.aspx' target='_blank'>Now Playing</a></p>">
+              Scotiabank Theatre Toronto
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div id="mapid" class="map-canvas"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+  <script type="text/javascript">
+    // init map in background
+    // ----------------------
+    var mapLocation = [43.65644, -79.380686];
+    var mapZoomLevel = 14;
+    // initialize the map and set its view to our chosen geographical coordinates and a zoom level
+    var map = L.map('mapid').setView(mapLocation, mapZoomLevel);
+    // get map tiles from open street map
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
+    // we need this because bootstrap moves the map after it's initialised.
+    $('#mapModal').on('show.bs.modal', function(){
+      setTimeout(function() {
+        map.invalidateSize();
+      }, 10);
+    });
+    var marker;
+
+    function showLocationOnMap(coords, header, popupContent) {
+      // change modal header
+      $("#mapModal .modal-title").html(header);
+
+      // marker
+      if (marker) {
+        marker.remove();
+      }
+      marker = L.marker(coords).addTo(map);
+      // bind a popup
+      marker.bindPopup(popupContent, {
+        minWidth: 200 
+      });
+
+      // center map
+      map.panTo(new L.LatLng(coords[0], coords[1]));
+
+      // show modal
+      $('#mapModal').modal('show');
+    }
+
+    // handle modal actions
+    // --------------------
+    $(document).on("click", ".js-openmap", function () {
+      var header = $(this).data('title');
+      var mapCoords = [
+        $(this).data('long'),
+        $(this).data('lat')
+      ]
+      var popup = $(this).data('popup');
+
+      showLocationOnMap(mapCoords, header, popup);
+    });
+  </script>
+
+</body>
+
+</html>

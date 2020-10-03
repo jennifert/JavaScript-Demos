@@ -3,18 +3,12 @@ JavaScript Demos
 
 These are just some small demos using JavaScript libraries and technology.
 
-Notes
-- The Google Maps and Bootstrap examples are self contained (css and JavaScript are called from CDN).
-- The require JS library has some elements relative to the folder, as well as CDN use.
-- Please do not add any demos that require running npm scripts, or if you do, include the package.json and then runing instructions on the html demo page.
+## Contributing:
+I open up contributing for some hacktoberfests (when I am available). Please check the Contributing.md doc before requesting a pull request. 
 
 ## Demo links:
 
 Here are the demos running on a server:
-
-### YQL:
-- Basic YQL: [https://jenntesolin.com/demos/basic.html](https://jenntesolin.com/demos/basic.html)
-- cData Example: [https://jenntesolin.com/demos/cdata_blog_example.html](https://jenntesolin.com/demos/cdata_blog_example.html)
 
 ### Bootstrap:
 - With Font Awesome: [https://jenntesolin.com/demos/fontawesome_bootstrap3.html](https://jenntesolin.com/demos/fontawesome_bootstrap3.html)
@@ -30,4 +24,4 @@ Here are the demos running on a server:
 
 ## Problems? Something missing?
 
-Feel free to open an issue and pull request. 
+Feel free to open an issue.

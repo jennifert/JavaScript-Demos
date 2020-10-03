@@ -7,8 +7,8 @@ assignees: ''
 
 ---
 
-**what**
+**What:**
 Describe the type of demo you want to do.
 
-**Additional context**
+**Additional context:**
 If there is a similar one, what is different

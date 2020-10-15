@@ -8,6 +8,7 @@ function AjaxRequest(search: string | null | undefined, uri: string) { //in serv
         if (this.status >= 200 && this.status < 400) { //on success
             var resp = this.response;
             console.log(resp);
+            //add code to make accessible for screenreaders once results are on page.
         } else { //on fail
             console.log('Error on the server. Check you have the correct url.');
         }

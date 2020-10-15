@@ -2,6 +2,7 @@
 function AjaxRequest(search: string | null | undefined, uri: string) { //in server api, search can be empty
     
     //typical ajax call, used this guide to change from jquery: http://youmightnotneedjquery.com/#request
+    //targeting IE 10 and higher
     const request = new XMLHttpRequest();
     request.open('POST', uri, true);  //post request
     request.onload = function () {

@@ -4,11 +4,11 @@ JavaScript Demos
 These are just some small demos using JavaScript libraries and technology.
 
 ## Contributing:
-I open up contributing for some hacktoberfests (when I am available). Please check the Contributing.md doc before requesting a pull request. 
+Contributions are typically opened for some hacktoberfests (when I am available). Please check the Contributing.md doc before sending a pull request. 
 
 ## Demo links:
 
-Here are the demos running on a server:
+Below are some of the  demos running on a server.
 
 ### Bootstrap:
 - With Font Awesome: [https://jenntesolin.com/demos/fontawesome_bootstrap3.html](https://jenntesolin.com/demos/fontawesome_bootstrap3.html)
